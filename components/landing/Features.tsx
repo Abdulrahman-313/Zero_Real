@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { CheckIcon, DocumentIcon, DownloadIcon, RelationsIcon, SparkleIcon, TableIcon } from "@/components/ui/icons";
+import { Reveal, Stagger, StaggerItem } from "./motion";
 
 interface Feature {
   icon: ReactNode;
@@ -45,30 +46,32 @@ export function Features() {
   return (
     <section id="features" className="scroll-mt-20 bg-paper py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">Three engines, one workspace</h2>
           <p className="mt-4 text-lg text-muted">Configure, preview and export — no code required. Everything runs in your browser.</p>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <Stagger className="mt-12 grid gap-6 md:grid-cols-3">
           {FEATURES.map((f) => (
-            <article key={f.title} className="rounded-2xl border border-line bg-cream/50 p-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-paper">{f.icon}</div>
-              <h3 className="mt-4 font-display text-xl font-semibold text-navy">{f.title}</h3>
-              <p className="mt-1.5 text-sm text-muted">{f.blurb}</p>
-              <ul className="mt-4 space-y-2">
-                {f.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2 text-sm text-ink">
-                    <CheckIcon width={16} height={16} className="mt-0.5 shrink-0 text-teal" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
+            <StaggerItem key={f.title}>
+              <article className="h-full rounded-2xl border border-line bg-cream/50 p-6">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-paper">{f.icon}</div>
+                <h3 className="mt-4 font-display text-xl font-semibold text-navy">{f.title}</h3>
+                <p className="mt-1.5 text-sm text-muted">{f.blurb}</p>
+                <ul className="mt-4 space-y-2">
+                  {f.points.map((p) => (
+                    <li key={p} className="flex items-start gap-2 text-sm text-ink">
+                      <CheckIcon width={16} height={16} className="mt-0.5 shrink-0 text-teal" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
 
-        <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-navy p-8 text-paper">
+        <Reveal className="mt-6 overflow-hidden rounded-2xl border border-line bg-navy p-8 text-paper">
           <div className="flex items-center gap-2">
             <SparkleIcon width={20} height={20} className="text-mint" />
             <h3 className="font-display text-xl font-semibold">An AI layer across the platform</h3>
@@ -84,21 +87,23 @@ export function Features() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+        <Stagger className="mt-6 grid gap-4 sm:grid-cols-3">
           {TRUST.map((tItem) => (
-            <div key={tItem.title} className="flex items-start gap-3 rounded-2xl border border-line bg-cream/50 p-5">
-              <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-mint text-teal-dark">
-                {tItem.title === "Exportable" ? <DownloadIcon width={16} height={16} /> : <CheckIcon width={16} height={16} />}
-              </span>
-              <div>
-                <p className="text-sm font-semibold text-navy">{tItem.title}</p>
-                <p className="mt-0.5 text-sm text-muted">{tItem.body}</p>
+            <StaggerItem key={tItem.title}>
+              <div className="flex h-full items-start gap-3 rounded-2xl border border-line bg-cream/50 p-5">
+                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-mint text-teal-dark">
+                  {tItem.title === "Exportable" ? <DownloadIcon width={16} height={16} /> : <CheckIcon width={16} height={16} />}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-navy">{tItem.title}</p>
+                  <p className="mt-0.5 text-sm text-muted">{tItem.body}</p>
+                </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

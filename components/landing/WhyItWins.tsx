@@ -1,4 +1,5 @@
 import { CheckIcon } from "@/components/ui/icons";
+import { Reveal, Stagger, StaggerItem } from "./motion";
 
 const REASONS = [
   { title: "One schema-aware pipeline", body: "Tabular, relational and document generators share the same engine, so the data is consistent across all three." },
@@ -13,22 +14,24 @@ export function WhyItWins() {
   return (
     <section id="why" className="scroll-mt-20 bg-paper py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">Built for engineers who need data now</h2>
           <p className="mt-4 text-lg text-muted">Realistic where it helps, strict where it matters.</p>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {REASONS.map((r) => (
-            <div key={r.title} className="rounded-2xl border border-line bg-cream/50 p-6">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-mint text-teal-dark">
-                <CheckIcon width={16} height={16} />
-              </span>
-              <h3 className="mt-4 font-display text-base font-semibold text-navy">{r.title}</h3>
-              <p className="mt-1.5 text-sm text-muted">{r.body}</p>
-            </div>
+            <StaggerItem key={r.title}>
+              <div className="h-full rounded-2xl border border-line bg-cream/50 p-6">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-mint text-teal-dark">
+                  <CheckIcon width={16} height={16} />
+                </span>
+                <h3 className="mt-4 font-display text-base font-semibold text-navy">{r.title}</h3>
+                <p className="mt-1.5 text-sm text-muted">{r.body}</p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

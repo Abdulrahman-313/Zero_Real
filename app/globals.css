@@ -28,10 +28,34 @@ html {
   color-scheme: light;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--color-cream);
   color: var(--color-ink);
   font-family: var(--font-sans);
+}
+
+/* Decorative landing background orbs (GPU-composited transforms only). */
+@keyframes zr-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(var(--dx, 30px), var(--dy, 30px), 0) scale(1.08);
+  }
+}
+
+.zr-orb {
+  will-change: transform;
+  animation: zr-float var(--dur, 20s) ease-in-out infinite;
+}
+
+.zr-orbs[data-paused="true"] .zr-orb {
+  animation-play-state: paused;
 }
 
 h1,
@@ -102,10 +126,19 @@ input[type="number"] {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .zr-orb {
+    animation: none !important;
   }
 }

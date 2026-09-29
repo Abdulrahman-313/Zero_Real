@@ -1,3 +1,6 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { cx } from "@/components/ui/cx";
 
 interface Row {
@@ -23,11 +26,9 @@ const TIER_TONE: Record<string, string> = {
   Bronze: "bg-cream text-muted",
 };
 
-/**
- * A static, on-brand mock of the workspace preview, reusing the app's real styling.
- * The row-fill animation is layered on in M3 (this markup stays as the reduced-motion fallback).
- */
+/** On-brand mock of the workspace preview. Rows stream in like a live generation; static under reduced motion. */
 export function WorkspaceMock() {
+  const reduce = useReducedMotion();
   return (
     <div className="overflow-hidden rounded-2xl border border-line bg-paper shadow-xl shadow-navy/10">
       <div className="flex items-center gap-2 border-b border-line bg-cream/70 px-4 py-2.5">
@@ -55,7 +56,14 @@ export function WorkspaceMock() {
             </thead>
             <tbody>
               {ROWS.map((r, i) => (
-                <tr key={r.id} className={cx("border-t border-line/70", i % 2 ? "bg-paper/60" : "bg-white")}>
+                <motion.tr
+                  key={r.id}
+                  className={cx("border-t border-line/70", i % 2 ? "bg-paper/60" : "bg-white")}
+                  initial={reduce ? false : { opacity: 0, y: 6 }}
+                  whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: 0.15 + i * 0.12, ease: "easeOut" }}
+                >
                   <td className="px-3 py-1.5 text-muted">{r.id}</td>
                   <td className="px-3 py-1.5">{r.name}</td>
                   <td className="hidden px-3 py-1.5 text-muted sm:table-cell">{r.email}</td>
@@ -63,7 +71,7 @@ export function WorkspaceMock() {
                   <td className="px-3 py-1.5">
                     <span className={cx("rounded-full px-2 py-0.5 text-[11px] font-medium", TIER_TONE[r.tier])}>{r.tier}</span>
                   </td>
-                </tr>
+                </motion.tr>
               ))}
             </tbody>
           </table>

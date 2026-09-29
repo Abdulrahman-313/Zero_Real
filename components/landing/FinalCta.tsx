@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { Reveal } from "./motion";
 
 export function FinalCta() {
   return (
     <section className="bg-cream px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl bg-navy px-8 py-14 text-center text-paper sm:px-14">
+      <Reveal className="mx-auto max-w-4xl overflow-hidden rounded-3xl bg-navy px-8 py-14 text-center text-paper sm:px-14">
         <h2 className="font-display text-3xl font-bold sm:text-4xl">Generate your first dataset in seconds</h2>
         <p className="mx-auto mt-4 max-w-xl text-paper/70">
           Open the workspace, pick an engine, and export realistic data — CSV, JSON, SQL or PDF. No real records involved.
@@ -16,7 +17,7 @@ export function FinalCta() {
             Explore features
           </a>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
