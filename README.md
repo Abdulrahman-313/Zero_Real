@@ -118,4 +118,4 @@ lib/export/              CSV, JSON, Postgres SQL, ZIP, document exports, Blob do
 
 Next.js 16 (App Router, Turbopack) · React 19 · TypeScript (strict) · Tailwind CSS 4 · @faker-js/faker 10 (seeded, custom randomizer) · zod 4 · @google/genai 2 · @noble/hashes · Vitest 5 · PGlite (tests).
 
-See [SPEC.md](SPEC.md) for the product specification and [DEMO.md](DEMO.md) for the live-demo script.
+See [SPEC.md](SPEC.md) for the product specification.
