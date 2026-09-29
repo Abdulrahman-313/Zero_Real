@@ -21,10 +21,10 @@ export const LOCALES: Record<LocaleId, LocaleInfo> = {
 };
 
 export const CURRENCIES: Record<CurrencyCode, { code: CurrencyCode; label: string }> = {
-  USD: { code: "USD", label: "US dollar (USD)" },
-  GBP: { code: "GBP", label: "British pound (GBP)" },
-  EUR: { code: "EUR", label: "Euro (EUR)" },
-  PKR: { code: "PKR", label: "Pakistani rupee (PKR)" },
+  USD: { code: "USD", label: "USD ($)" },
+  GBP: { code: "GBP", label: "GBP (£)" },
+  EUR: { code: "EUR", label: "EUR (€)" },
+  PKR: { code: "PKR", label: "PKR (Rs)" },
 };
 
 export const MAX_SEED = 2_147_483_647;

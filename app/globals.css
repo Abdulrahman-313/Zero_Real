@@ -70,6 +70,18 @@ input[type="number"] {
     background: #fff;
   }
 
+  /* Un-clip the app shell so long documents flow across pages. */
+  .workspace-grid {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .workspace-grid main {
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
   .no-print {
     display: none !important;
   }

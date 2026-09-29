@@ -28,8 +28,16 @@ function useHashMode(): [ModeId, (mode: ModeId) => void] {
   return [mode, setMode];
 }
 
+const noopSubscribe = () => () => {};
+
+/** False during prerender and hydration, true afterwards. Generation is client-only. */
+function useHydrated(): boolean {
+  return useSyncExternalStore(noopSubscribe, () => true, () => false);
+}
+
 export function Workspace() {
   const [mode, setMode] = useHashMode();
+  const hydrated = useHydrated();
   const [settings, setSettings] = useState<GlobalSettings>(DEFAULT_SETTINGS);
 
   // All modes stay mounted so their configuration survives tab switches;
@@ -48,16 +56,16 @@ export function Workspace() {
       >
         Skip to preview
       </a>
-      <div className="flex min-h-dvh flex-col lg:grid lg:h-dvh lg:grid-cols-[15.5rem_minmax(0,1fr)_23rem] lg:grid-rows-[minmax(0,1fr)_auto]">
+      <div className="workspace-grid flex min-h-dvh flex-col lg:grid lg:h-dvh lg:grid-cols-[15.5rem_minmax(0,1fr)_23rem] lg:grid-rows-[minmax(0,1fr)_auto]">
         <Sidebar mode={mode} onModeChange={setMode} />
         <div className={slot("tabular")}>
-          <TabularMode active={mode === "tabular"} settings={settings} onSettingsChange={setSettings} />
+          <TabularMode active={hydrated && mode === "tabular"} settings={settings} onSettingsChange={setSettings} />
         </div>
         <div className={slot("relational")}>
-          <RelationalMode active={mode === "relational"} settings={settings} onSettingsChange={setSettings} />
+          <RelationalMode active={hydrated && mode === "relational"} settings={settings} onSettingsChange={setSettings} />
         </div>
         <div className={slot("documents")}>
-          <DocumentsMode active={mode === "documents"} settings={settings} onSettingsChange={setSettings} />
+          <DocumentsMode active={hydrated && mode === "documents"} settings={settings} onSettingsChange={setSettings} />
         </div>
       </div>
     </NoticeProvider>
