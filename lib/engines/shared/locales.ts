@@ -14,10 +14,10 @@ export interface LocaleInfo {
 }
 
 export const LOCALES: Record<LocaleId, LocaleInfo> = {
-  "en-US": { id: "en-US", label: "English (United States)", defaultCurrency: "USD", country: "United States" },
-  "en-GB": { id: "en-GB", label: "English (United Kingdom)", defaultCurrency: "GBP", country: "United Kingdom" },
-  "de-DE": { id: "de-DE", label: "Deutsch (Deutschland)", defaultCurrency: "EUR", country: "Germany" },
-  "en-PK": { id: "en-PK", label: "English (Pakistan)", defaultCurrency: "PKR", country: "Pakistan" },
+  "en-US": { id: "en-US", label: "English (US)", defaultCurrency: "USD", country: "United States" },
+  "en-GB": { id: "en-GB", label: "English (UK)", defaultCurrency: "GBP", country: "United Kingdom" },
+  "de-DE": { id: "de-DE", label: "Deutsch (DE)", defaultCurrency: "EUR", country: "Germany" },
+  "en-PK": { id: "en-PK", label: "English (PK)", defaultCurrency: "PKR", country: "Pakistan" },
 };
 
 export const CURRENCIES: Record<CurrencyCode, { code: CurrencyCode; label: string }> = {
