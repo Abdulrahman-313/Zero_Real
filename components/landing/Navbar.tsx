@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { cx } from "@/components/ui/controls";
+import { UserButton, useUser } from "@clerk/nextjs";
+import { cx } from "@/components/ui/cx";
 import { CloseIcon } from "@/components/ui/icons";
 import { LandingLogo } from "./LandingLogo";
 
@@ -15,6 +16,7 @@ const NAV_LINKS = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { isSignedIn } = useUser();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -45,12 +47,23 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-2 md:flex">
-          <Link href="/app" className="rounded-xl px-3.5 py-2 text-sm font-medium text-navy transition-colors hover:bg-mint/70">
-            Sign in
-          </Link>
-          <Link href="/app" className="rounded-xl bg-teal px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-dark">
-            Launch app
-          </Link>
+          {isSignedIn ? (
+            <>
+              <Link href="/app" className="rounded-xl bg-teal px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-dark">
+                Open app
+              </Link>
+              <UserButton />
+            </>
+          ) : (
+            <>
+              <Link href="/sign-in" className="rounded-xl px-3.5 py-2 text-sm font-medium text-navy transition-colors hover:bg-mint/70">
+                Sign in
+              </Link>
+              <Link href="/app" className="rounded-xl bg-teal px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-dark">
+                Launch app
+              </Link>
+            </>
+          )}
         </div>
 
         <button
@@ -81,13 +94,24 @@ export function Navbar() {
                 </a>
               </li>
             ))}
-            <li className="mt-2 flex gap-2">
-              <Link href="/app" className="flex-1 rounded-xl border border-line px-4 py-2 text-center text-sm font-medium text-navy" onClick={() => setOpen(false)}>
-                Sign in
-              </Link>
-              <Link href="/app" className="flex-1 rounded-xl bg-teal px-4 py-2 text-center text-sm font-semibold text-white" onClick={() => setOpen(false)}>
-                Launch app
-              </Link>
+            <li className="mt-2 flex items-center gap-2">
+              {isSignedIn ? (
+                <>
+                  <Link href="/app" className="flex-1 rounded-xl bg-teal px-4 py-2 text-center text-sm font-semibold text-white" onClick={() => setOpen(false)}>
+                    Open app
+                  </Link>
+                  <UserButton />
+                </>
+              ) : (
+                <>
+                  <Link href="/sign-in" className="flex-1 rounded-xl border border-line px-4 py-2 text-center text-sm font-medium text-navy" onClick={() => setOpen(false)}>
+                    Sign in
+                  </Link>
+                  <Link href="/app" className="flex-1 rounded-xl bg-teal px-4 py-2 text-center text-sm font-semibold text-white" onClick={() => setOpen(false)}>
+                    Launch app
+                  </Link>
+                </>
+              )}
             </li>
           </ul>
         </div>

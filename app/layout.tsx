@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans, Space_Grotesk } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import { clerkAppearance } from "@/lib/clerkAppearance";
 import "./globals.css";
 
 const grotesk = Space_Grotesk({
@@ -55,7 +57,11 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${grotesk.variable} ${plex.variable} antialiased`}>
-      <body className="min-h-dvh">{children}</body>
+      <body className="min-h-dvh">
+        <ClerkProvider appearance={clerkAppearance} afterSignOutUrl="/">
+          {children}
+        </ClerkProvider>
+      </body>
     </html>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { cx } from "@/components/ui/controls";
+import { UserButton } from "@clerk/nextjs";
+import { cx } from "@/components/ui/cx";
 import { DocumentIcon, RelationsIcon, TableIcon } from "@/components/ui/icons";
 import { MODES, PIPELINE_STEPS, type ModeId } from "./modes";
 
@@ -16,10 +17,11 @@ export function Sidebar({ mode, onModeChange }: { mode: ModeId; onModeChange: (m
     <header className="no-print order-1 bg-navy text-paper lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:flex lg:flex-col lg:overflow-y-auto">
       <div className="flex items-center gap-3 px-4 pt-4 pb-3 lg:px-5 lg:pt-6 lg:pb-6">
         <LogoMark />
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <p className="font-display text-base leading-tight font-semibold">Zero Real</p>
           <p className="text-xs text-mint/80">Synthetic data platform</p>
         </div>
+        <UserButton />
       </div>
 
       <nav aria-label="Data type" className="px-2 pb-2 lg:px-3">
