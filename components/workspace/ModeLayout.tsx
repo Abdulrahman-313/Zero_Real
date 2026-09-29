@@ -46,9 +46,12 @@ export function ModeLayout({
         <div className="space-y-4">{config}</div>
       </aside>
 
-      <div className="no-print sticky bottom-0 z-30 order-4 border-t border-line bg-paper/95 px-4 py-3 backdrop-blur lg:col-start-3 lg:row-start-2 lg:border-l">
+      <section
+        aria-label={`${title} export`}
+        className="no-print sticky bottom-0 z-30 order-4 border-t border-line bg-paper/95 px-4 py-3 backdrop-blur lg:col-start-3 lg:row-start-2 lg:border-l"
+      >
         {exportBar}
-      </div>
+      </section>
     </>
   );
 }
