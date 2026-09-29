@@ -21,6 +21,7 @@ import { ExportMenu } from "../ExportMenu";
 import { GlobalSettingsCard } from "../GlobalSettingsCard";
 import { ModeLayout } from "../ModeLayout";
 import { MODES, type ModeProps } from "../modes";
+import { AiAssist } from "./AiAssist";
 import { ColumnEditor } from "./ColumnEditor";
 
 const meta = MODES.find((m) => m.id === "tabular")!;
@@ -133,6 +134,21 @@ export function TabularMode({ active, settings, onSettingsChange }: ModeProps) {
                 max={MAX_ROWS}
                 onChange={(rowCount) => patch({ rowCount })}
               />
+            }
+          />
+          <AiAssist
+            config={config}
+            onApplyColumns={(columns) => patch({ columns, textPools: {} })}
+            onSetPool={(name, texts) =>
+              setConfig((c) => {
+                const textPools = { ...c.textPools };
+                if (texts) textPools[name] = texts;
+                else delete textPools[name];
+                return { ...c, textPools };
+              })
+            }
+            onEdgeKinds={(kinds) =>
+              setConfig((c) => ({ ...c, edgeCases: { kinds, rate: kinds.length > 0 && c.edgeCases.rate === 0 ? 5 : c.edgeCases.rate } }))
             }
           />
           <Card title="Data quality" description="Inject realistic imperfections.">

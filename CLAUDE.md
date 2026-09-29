@@ -67,6 +67,7 @@ tests/ (or *.test.ts next to the code)
 - Semantic, accessible HTML: landmarks, labels, keyboard support, visible focus, AA contrast.
 - Responsive: the three panels stack below 1024 px and there is no horizontal page scroll.
 - Tests must cover: seed determinism, FK integrity, invoice totals, running balance (plus CSV/SQL escaping and inference heuristics).
+- Test tooling: `server-only` is aliased to a stub in `vitest.config.mts`. The SQL dump is loaded into real Postgres through `@electric-sql/pglite`. Gemini is tested by stubbing `fetch` (success, 429, bad JSON, stall/timeout), so no key is needed.
 
 ## Design tokens (match the deck)
 

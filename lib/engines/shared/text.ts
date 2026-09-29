@@ -8,23 +8,57 @@ import type { Rng } from "./rng";
 export const TEXT_KINDS = ["product", "memo", "sentence"] as const;
 export type TextKind = (typeof TEXT_KINDS)[number];
 
-const PRODUCT = {
-  adjective: ["Hand-stitched", "Lightweight", "Recycled", "Compact", "Heavy-duty", "Minimalist", "Water-resistant", "Insulated", "Modular", "Everyday"],
-  material: ["canvas", "oak", "stainless steel", "merino wool", "ceramic", "bamboo", "aluminium", "linen", "leather", "cork"],
-  noun: ["tote bag", "desk organiser", "water bottle", "travel mug", "notebook cover", "laptop sleeve", "plant pot", "lunch box", "phone stand", "backpack"],
-  benefit: [
-    "built for daily commutes",
-    "that keeps drinks cold for 24 hours",
-    "with a reinforced base",
-    "designed to fit a 14-inch laptop",
-    "that folds flat for storage",
-    "finished with a soft-touch coating",
-    "made to last for years",
-    "with a lifetime repair promise",
-    "that is dishwasher safe",
-    "sized for small desks",
-  ],
-};
+/** Products with materials and benefits that make sense together. */
+const PRODUCTS: Array<{ noun: string; adjectives: string[]; materials: string[]; benefits: string[] }> = [
+  {
+    noun: "tote bag",
+    adjectives: ["Hand-stitched", "Everyday", "Recycled"],
+    materials: ["canvas", "linen", "leather"],
+    benefits: ["with a reinforced base", "built for daily commutes", "that folds flat for storage"],
+  },
+  {
+    noun: "water bottle",
+    adjectives: ["Insulated", "Lightweight", "Leak-proof"],
+    materials: ["stainless steel", "aluminium"],
+    benefits: ["that keeps drinks cold for 24 hours", "with a one-hand flip lid", "that fits standard cup holders"],
+  },
+  {
+    noun: "travel mug",
+    adjectives: ["Insulated", "Compact", "Everyday"],
+    materials: ["stainless steel", "ceramic-lined steel", "bamboo-wrapped steel"],
+    benefits: ["that keeps coffee hot for 6 hours", "that is dishwasher safe", "with a spill-proof lid"],
+  },
+  {
+    noun: "desk organiser",
+    adjectives: ["Minimalist", "Modular", "Compact"],
+    materials: ["oak", "bamboo", "cork", "powder-coated steel"],
+    benefits: ["sized for small desks", "with a hidden cable slot", "that keeps pens and notes in reach"],
+  },
+  {
+    noun: "laptop sleeve",
+    adjectives: ["Padded", "Water-resistant", "Slim"],
+    materials: ["merino wool felt", "recycled polyester", "leather"],
+    benefits: ["designed to fit a 14-inch laptop", "with a front pocket for chargers", "finished with a soft-touch lining"],
+  },
+  {
+    noun: "plant pot",
+    adjectives: ["Glazed", "Minimalist", "Self-watering"],
+    materials: ["ceramic", "terracotta", "recycled plastic"],
+    benefits: ["with a drainage tray", "sized for windowsill herbs", "that hides a nursery pot"],
+  },
+  {
+    noun: "backpack",
+    adjectives: ["Heavy-duty", "Lightweight", "Water-resistant"],
+    materials: ["waxed canvas", "ripstop nylon", "recycled polyester"],
+    benefits: ["with a padded laptop compartment", "built for daily commutes", "with a lifetime repair promise"],
+  },
+  {
+    noun: "phone stand",
+    adjectives: ["Adjustable", "Compact", "Weighted"],
+    materials: ["aluminium", "walnut", "silicone-padded steel"],
+    benefits: ["that folds flat for travel", "angled for video calls", "that works with most cases"],
+  },
+];
 
 const MEMO = {
   lead: ["Payment for", "Reimbursement:", "Refund for", "Deposit for", "Transfer for", "Monthly fee:", "Adjustment:", "Invoice settlement:"],
@@ -59,8 +93,10 @@ const SENTENCE = {
 
 export function synthesizeText(kind: TextKind, rng: Rng): string {
   switch (kind) {
-    case "product":
-      return `${rng.pick(PRODUCT.adjective)} ${rng.pick(PRODUCT.material)} ${rng.pick(PRODUCT.noun)} ${rng.pick(PRODUCT.benefit)}.`;
+    case "product": {
+      const p = rng.pick(PRODUCTS);
+      return `${rng.pick(p.adjectives)} ${rng.pick(p.materials)} ${p.noun} ${rng.pick(p.benefits)}.`;
+    }
     case "memo":
       return `${rng.pick(MEMO.lead)} ${rng.pick(MEMO.subject)}`;
     case "sentence":
