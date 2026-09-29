@@ -1,21 +1,42 @@
-import Link from "next/link";
 import { LegacyHashRedirect } from "@/components/landing/LegacyHashRedirect";
+import { Navbar } from "@/components/landing/Navbar";
+import { Hero } from "@/components/landing/Hero";
+import { Features } from "@/components/landing/Features";
+import { HowItWorks } from "@/components/landing/HowItWorks";
+import { WhyItWins } from "@/components/landing/WhyItWins";
+import { FinalCta } from "@/components/landing/FinalCta";
+import { Footer } from "@/components/landing/Footer";
 
-// Temporary landing placeholder (replaced by the full marketing page in M2).
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Zero Real",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "Web",
+  url: siteUrl,
+  description:
+    "Zero Real generates realistic, privacy-safe tabular, relational and document data on demand. Seeded, validated and exportable to CSV, JSON, SQL and printable documents.",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+};
+
 export default function Home() {
   return (
-    <main className="flex min-h-dvh flex-col items-center justify-center bg-cream p-6 text-center">
+    <div className="min-h-dvh bg-cream">
       <LegacyHashRedirect />
-      <h1 className="font-display text-4xl font-bold text-navy">Zero Real</h1>
-      <p className="mt-2 max-w-md text-muted">
-        Realistic, privacy-safe tabular, relational and document data — generated on demand.
-      </p>
-      <Link
-        href="/app"
-        className="mt-6 rounded-xl bg-teal px-5 py-2.5 text-sm font-medium text-white hover:bg-teal-dark"
-      >
-        Launch app
-      </Link>
-    </main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Navbar />
+      <main>
+        <Hero />
+        <Features />
+        <HowItWorks />
+        <WhyItWins />
+        <FinalCta />
+      </main>
+      <Footer />
+    </div>
   );
 }

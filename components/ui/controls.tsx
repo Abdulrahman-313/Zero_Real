@@ -1,10 +1,7 @@
 "use client";
 
 import { useId, useState, type ButtonHTMLAttributes, type ReactNode } from "react";
-
-function cx(...classes: Array<string | false | null | undefined>): string {
-  return classes.filter(Boolean).join(" ");
-}
+import { cx } from "./cx";
 
 export { cx };
 
