@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Synthetic Data Platform — realistic, privacy-safe tabular, relational and document data.";
+export const alt = "Zero Real — realistic, privacy-safe tabular, relational and document data, generated on demand.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -22,9 +22,9 @@ export default function Image() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", fontSize: 26, color: "#DCEDE9", letterSpacing: 2 }}>HACKDATAV2 · SUBMISSION</div>
+        <div style={{ display: "flex", fontSize: 26, color: "#DCEDE9", letterSpacing: 2 }}>SYNTHETIC DATA · ON DEMAND</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          <div style={{ display: "flex", fontSize: 84, fontWeight: 700, lineHeight: 1.05 }}>Synthetic data platform</div>
+          <div style={{ display: "flex", fontSize: 96, fontWeight: 700, lineHeight: 1.05 }}>Zero Real</div>
           <div style={{ display: "flex", fontSize: 34, color: "#DCEDE9", maxWidth: 920 }}>
             Realistic, privacy-safe tabular, relational and document data — generated on demand.
           </div>

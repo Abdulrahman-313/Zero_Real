@@ -1,8 +1,8 @@
-# Synthetic Data Platform — Product Spec
+# Zero Real — Product Spec
 
-> **HackDataV2 submission.** Realistic, privacy-safe tabular, relational and document data — generated on demand.
+> Synthetic data, generated on demand. Realistic, privacy-safe tabular, relational and document data.
 
-This spec follows the pitch deck (`Synthetic Data Platform — HackDataV2.pdf`). If they disagree, the deck's wording and claims win, and this spec should be updated to match.
+This spec describes the product. If the spec and the code disagree, fix whichever is wrong in the same commit.
 
 ## 1. Problem & approach
 

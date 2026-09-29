@@ -44,7 +44,7 @@ export function createTableSql(def: TableDef): string {
 /** A complete, re-runnable Postgres dump: drop, create (with constraints), insert, in one transaction. */
 export function toPostgresDump(dataset: RelationalDataset, header: { seed: number; generatedFor: string }): string {
   const out: string[] = [];
-  out.push("-- Synthetic Data Platform — SYNTHETIC TEST DATA, not real records.");
+  out.push("-- Zero Real — SYNTHETIC TEST DATA, not real records.");
   out.push(`-- Seed ${header.seed} · ${header.generatedFor} · money columns (*_minor) are integer minor units in ${dataset.currency}.`);
   out.push("");
   out.push("BEGIN;");

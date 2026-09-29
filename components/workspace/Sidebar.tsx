@@ -17,8 +17,8 @@ export function Sidebar({ mode, onModeChange }: { mode: ModeId; onModeChange: (m
       <div className="flex items-center gap-3 px-4 pt-4 pb-3 lg:px-5 lg:pt-6 lg:pb-6">
         <LogoMark />
         <div className="min-w-0">
-          <p className="font-display text-base leading-tight font-semibold">Synthetic Data Platform</p>
-          <p className="text-xs text-mint/80">HackDataV2</p>
+          <p className="font-display text-base leading-tight font-semibold">Zero Real</p>
+          <p className="text-xs text-mint/80">Synthetic data platform</p>
         </div>
       </div>
 

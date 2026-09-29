@@ -1,6 +1,6 @@
-# Synthetic Data Platform
+# Zero Real
 
-> **HackDataV2 submission.** Realistic, privacy-safe tabular, relational and document data, generated on demand.
+> **Synthetic data, generated on demand.** Realistic, privacy-safe tabular, relational and document data.
 
 **Pipeline:** Ingest schema → Model relationships → Generate with AI → Validate & export.
 

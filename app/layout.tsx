@@ -19,13 +19,14 @@ const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : "http://localhost:3000";
 
-const title = "Synthetic Data Platform";
+const title = "Zero Real";
+const tagline = "Synthetic data, generated on demand";
 const description =
-  "Realistic, privacy-safe tabular, relational and document data — generated on demand. Seeded, validated and exportable to CSV, JSON, SQL and printable documents.";
+  "Zero Real generates realistic, privacy-safe tabular, relational and document data on demand. Seeded, validated and exportable to CSV, JSON, SQL and printable documents.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: `${title} — HackDataV2`, template: `%s · ${title}` },
+  title: { default: `${title} — ${tagline}`, template: `%s · ${title}` },
   description,
   applicationName: title,
   keywords: ["synthetic data", "test data", "privacy", "CSV", "SQL", "invoices", "bank statements", "faker"],

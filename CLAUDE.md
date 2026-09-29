@@ -1,4 +1,4 @@
-# CLAUDE.md — Synthetic Data Platform (HackDataV2)
+# CLAUDE.md — Zero Real
 
 @AGENTS.md
 
