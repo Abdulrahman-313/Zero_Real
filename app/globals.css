@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-grotesk), var(--font-plex), ui-sans-serif, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@theme {
+  --color-navy: #0f2a3f;
+  --color-navy-700: #173a55;
+  --color-navy-600: #214b6b;
+  --color-teal: #1c7c6c;
+  --color-teal-dark: #15604f;
+  --color-mint: #dcede9;
+  --color-cream: #f0eee6;
+  --color-paper: #fafaf7;
+  --color-ink: #16222d;
+  --color-muted: #52606d;
+  --color-line: #dfdccf;
+  --color-danger: #b42318;
+  --color-danger-soft: #fdecea;
+  --color-warn: #8a5a00;
+  --color-warn-soft: #fff4d6;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+/* Number inputs: keep native spinners but align text */
+input[type="number"] {
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Printable documents: only the print root is shown. */
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  .print-page {
+    break-after: page;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .print-page:last-child {
+    break-after: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
