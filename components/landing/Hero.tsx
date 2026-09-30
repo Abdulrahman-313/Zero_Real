@@ -37,7 +37,7 @@ export function Hero() {
             </div>
           </Reveal>
           <Reveal delay={0.24}>
-            <p className="mt-5 text-xs text-muted">No sign-up to explore the demo data · Runs in your browser · Export to CSV, JSON, SQL & PDF</p>
+            <p className="mt-5 text-xs text-muted">Free to start · Runs in your browser · Export to CSV, JSON, SQL &amp; PDF</p>
           </Reveal>
         </div>
 

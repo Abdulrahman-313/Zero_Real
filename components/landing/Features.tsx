@@ -74,10 +74,10 @@ export function Features() {
         <Reveal className="mt-6 overflow-hidden rounded-2xl border border-line bg-navy p-8 text-paper">
           <div className="flex items-center gap-2">
             <SparkleIcon width={20} height={20} className="text-mint" />
-            <h3 className="font-display text-xl font-semibold">An AI layer across the platform</h3>
+            <h3 className="font-display text-xl font-semibold">An AI-assisted schema workflow</h3>
           </div>
           <p className="mt-2 max-w-2xl text-sm text-paper/70">
-            Powered by Google Gemini, with an automatic rule-based fallback — so it stays fast and never hangs, even offline.
+            In the tabular workspace, Google Gemini speeds up setup — with an automatic rule-based fallback, so it stays fast and never hangs, even offline.
           </p>
           <div className="mt-6 grid gap-5 sm:grid-cols-3">
             {AI_ITEMS.map((a) => (

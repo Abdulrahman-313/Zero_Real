@@ -56,7 +56,7 @@ export function Workspace() {
       >
         Skip to preview
       </a>
-      <div className="workspace-grid flex min-h-dvh flex-col lg:grid lg:h-dvh lg:grid-cols-[15.5rem_minmax(0,1fr)_23rem] lg:grid-rows-[minmax(0,1fr)_auto]">
+      <div className="workspace-grid flex min-h-dvh flex-col lg:grid lg:h-dvh lg:grid-cols-[15.5rem_minmax(0,1fr)_23rem] lg:grid-rows-[minmax(0,1fr)_auto] lg:overflow-hidden">
         <Sidebar mode={mode} onModeChange={setMode} />
         <div className={slot("tabular")}>
           <TabularMode active={hydrated && mode === "tabular"} settings={settings} onSettingsChange={setSettings} />
